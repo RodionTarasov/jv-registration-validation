@@ -6,8 +6,8 @@ import core.basesyntax.exceprions.RegistrationException;
 import core.basesyntax.model.User;
 
 public class RegistrationServiceImpl implements RegistrationService {
-    private static final int MAX_LENGTH_LOGIN = 6;
-    private static final int MAX_LENGTH_PAS = 6;
+    private static final int MIX_LENGTH_LOGIN = 6;
+    private static final int MIX_LENGTH_PAS = 6;
     private static final int MIN_AGE = 18;
     private StorageDao storageDao = new StorageDaoImpl();
 
@@ -23,8 +23,8 @@ public class RegistrationServiceImpl implements RegistrationService {
         if (existingUser != null) {
             throw new RegistrationException("User with this login already exists");
         }
-        if (user.getLogin().length() < MAX_LENGTH_LOGIN
-                || user.getPassword().length() < MAX_LENGTH_PAS) {
+        if (user.getLogin().length() < MIX_LENGTH_LOGIN
+                || user.getPassword().length() < MIX_LENGTH_PAS) {
             throw new RegistrationException("Invalid data transmitted");
         }
         if (user.getAge() < MIN_AGE) {
